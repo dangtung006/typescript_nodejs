@@ -11,15 +11,15 @@ Cài đặt ts-node :
 Cài đặt nodemon :
     npm i --save-dev nodemon
 
-Khởi tạo TypeScript với Node.js
+Khởi tạo TypeScript với Node.js :
     npx tsc --init
     tạo folder src
     tạo file index.ts trong src
 
-lắng nghe thay đổi ts và build ra file js trong folder dist
+lắng nghe thay đổi ts và build ra file js trong folder dist :
     npm run watch-ts
 
-khi folder dist mà được build thì nhờ nodemon chạy hot reload
+khi folder dist mà được build thì nhờ nodemon chạy hot reload:
 
     npm run server 
 
