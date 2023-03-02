@@ -1,0 +1,26 @@
+POST http://localhost:3000/book/create
+Content-Type: application/json
+
+{
+    "title"  :  "23333333",
+    "author" : "test" 
+}
+
+###
+GET http://localhost:3000/book/get
+
+
+###
+GET http://localhost:3000/book/get/64000e7160472a0b6f2719cc
+
+###
+PATCH  http://localhost:3000/book/update/64000e7160472a0b6f2719cc
+Content-Type: application/json
+
+{
+    "title"  :  "23333333",
+    "author" : "33333" 
+}
+
+###
+DELETE http://localhost:3000/book/delete/640023a3f152fd515aba6c7e

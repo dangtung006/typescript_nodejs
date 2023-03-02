@@ -4,6 +4,9 @@ import cors from "cors";
 import helmet from "helmet";
 import { itemsRouter } from "./item/item.router";
 import mongoose from 'mongoose';
+import bookRoutes from './route/book';
+
+
 dotenv.config();
 
 const connectDB = async function():Promise<void> {
@@ -48,7 +51,8 @@ const connectDB = async function():Promise<void> {
             next();
         });
 
-        app.use("/items", itemsRouter);
+        // app.use("/items", itemsRouter);
+        app.use("/book", bookRoutes);
 
         const server = app.listen(PORT, () => {
             console.log(`Listening on port ${PORT}`);

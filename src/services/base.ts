@@ -1,15 +1,27 @@
 export class BaseService {
     private model: any;
     
-    constructor(model : any) {
-        this.model = model;
+    constructor(opt : { model : any } ) {
+        this.model = opt.model;
     }
 
-    public getById(id : any){
+    public getById(id : string){
         return this.model.findById(id)
     }
     
     public getAll(){
         return this.model.find();
+    }
+
+    public create(data : any){
+        return new this.model(data).save();
+    }
+
+    public updateOneById(id : string, opt : any){
+        return new this.model.findByIdAndUpdate(id);
+    }
+
+    removeById(id: string){
+        return this.model.findByIdAndDelete(id);
     }
 }
