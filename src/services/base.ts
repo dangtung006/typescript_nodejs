@@ -21,7 +21,7 @@ export class BaseService {
         return new this.model.findByIdAndUpdate(id);
     }
 
-    removeById(id: string){
+    public removeById(id: string){
         return this.model.findByIdAndDelete(id);
     }
 }

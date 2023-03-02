@@ -5,6 +5,7 @@ import helmet from "helmet";
 import { itemsRouter } from "./item/item.router";
 import mongoose from 'mongoose';
 import bookRoutes from './route/book';
+import authorRoutes from './route/author';
 
 
 dotenv.config();
@@ -53,6 +54,7 @@ const connectDB = async function():Promise<void> {
 
         // app.use("/items", itemsRouter);
         app.use("/book", bookRoutes);
+        app.use("/author", authorRoutes);
 
         const server = app.listen(PORT, () => {
             console.log(`Listening on port ${PORT}`);

@@ -1,0 +1,24 @@
+POST http://localhost:3000/author/create
+Content-Type: application/json
+
+{
+    "name"  :  "Tony Doan"
+}
+
+###
+GET http://localhost:3000/author/get
+
+
+###
+GET http://localhost:3000/author/get/64004f5bf93481778830a5ee
+
+###
+PATCH  http://localhost:3000/author/update/64004f5bf93481778830a5ee
+Content-Type: application/json
+
+{
+    "name" : "Tony Huy"
+}
+
+###
+DELETE http://localhost:3000/author/delete/64004f5bf93481778830a5ee
