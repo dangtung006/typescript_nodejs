@@ -24,4 +24,8 @@ export class BaseService {
     public removeById(id: string){
         return this.model.findByIdAndDelete(id);
     }
+
+    public getByCondition(condition : any){
+        return this.model.findOne(condition);
+    }
 }

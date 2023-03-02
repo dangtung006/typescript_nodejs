@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from 'express';
-import mongoose from 'mongoose';
 import { AuthorService } from '../services/author';
 
 const AuthorServiceHelper = new AuthorService();
