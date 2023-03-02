@@ -37,3 +37,9 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin https://github.com/dangtung006/typescript_nodejs.git
 git push -u origin main
+
+
+Other source code :
+
+    https://github.com/joeythelantern/Mongoose-Typescript-In-Depth
+    https://github.com/FaztWeb/restapi-jwt-ts
