@@ -59,7 +59,6 @@ const removeAuthor = async (req : Request, res: Response) => {
     const { authorId } = req.params;
     try{
         const author = await AuthorServiceHelper.removeById(authorId);
-        console.log("author : " , author);
         if(!author._id)
             throw new Error("Fail to delete");
         return res.status(201).json({ result : "ok"});

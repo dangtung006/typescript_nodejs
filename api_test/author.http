@@ -7,7 +7,7 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/author/get
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmd0dW5nQGdtYWlsLmNvbSIsIl9pZCI6IjY0MDE1ZmM2Y2RiNzEzN2IyY2U1MjM3ZSIsImlhdCI6MTY3NzgxNDQ2MywiZXhwIjoxNjc3ODMyNDYzfQ.H3Jc6hRszbaopcZSxEsqJzrLvnEjvtj8r7mvpGWqi5k
 
 ###
 GET http://localhost:3000/author/get/64004f5bf93481778830a5ee

@@ -37,7 +37,6 @@ const signIn = async (req : Request, res : Response): Promise<Response>=>{
         return res.status(400).json({ token: generateToken(user) });
         
     }catch(err : any){
-        console.log("There is an err", err);
         return res.status(500).send({ err : err.toString() });
     }
 }
