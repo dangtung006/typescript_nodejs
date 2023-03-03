@@ -1,7 +1,8 @@
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { UserService } from '../services/user';
 import { generateToken } from "../helper/jwt.helper";
 import { HTTP400Error } from "../helper/error.helper";
+import { logger } from "../helper/loggerWinston.helper";
 
 const UserServiceHelper = new UserService();
 
@@ -10,8 +11,10 @@ const signUp = async (req : Request, res : Response): Promise<Response>=>{
     try{
         let user = await UserServiceHelper.getByCondition({ email });
 
-        if(user) 
+        if(user) {
+            logger.debug('The User already Exists');
             throw new HTTP400Error("The User already Exists");
+        }
 
         user = await UserServiceHelper.create(req.body);
         return res.status(200).json({ user });
