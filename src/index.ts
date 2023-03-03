@@ -8,7 +8,7 @@ import mongoose from 'mongoose';
 import bookRoutes from './route/book';
 import authorRoutes from './route/author';
 import userRoutes from './route/user';
-import passportMiddleware from './middlewares/passport';
+import passportMiddleware from './middlewares/passport.Jwt';
 
 dotenv.config();
 
