@@ -8,6 +8,7 @@ Cài đặt các dependeccy
 
     npm i express dotenv cors helmet --save
     npm i --save-dev @types/node @types/express @types/dotenv @types/cors @types/helmet typescript
+    npm i express-session && npm i -D @types/express-session
 
 Cài đặt ts-node : 
 

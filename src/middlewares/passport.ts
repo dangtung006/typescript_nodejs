@@ -7,14 +7,9 @@ const opts: StrategyOptions = {
     secretOrKey: config.jwtSecret
 };
 
-console.log("opts : " , opts);
-
 export default new Strategy(opts, async (payload : any, done : any) => {
     try {
-        console.log("payload : ", payload);
         const user = await User.findById(payload._id);
-        console.log("user 233333 : " , user);
-
         if (user) {
             return done(null, user);
         }
