@@ -6,20 +6,18 @@ const UserServiceHelper = new UserService();
 
 
 const signUp = async (req : Request, res : Response): Promise<Response>=>{
-    const { email , password } = req.body;
+    const { email } = req.body;
     try{
-        let user = UserServiceHelper.getByCondition({ email });
+        let user = await UserServiceHelper.getByCondition({ email });
 
         if(user) 
-            throw new Error("User not found");
+            throw new Error("The User already Exists");
 
         user = await UserServiceHelper.create(req.body);
-        console.log(user);
         return res.status(200).json({ user });
 
-    }catch(err){
-        console.log("There is an err", err);
-        return res.status(500).send({ err });
+    }catch(err : any){
+        return res.status(500).send({ err : err.toString() });
     }
 }
 
@@ -38,9 +36,9 @@ const signIn = async (req : Request, res : Response): Promise<Response>=>{
 
         return res.status(400).json({ token: generateToken(user) });
         
-    }catch(err){
+    }catch(err : any){
         console.log("There is an err", err);
-        return res.status(500).send({ err });
+        return res.status(500).send({ err : err.toString() });
     }
 }
 
