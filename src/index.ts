@@ -9,17 +9,19 @@ import mongoose from 'mongoose';
 import bookRoutes from './route/book';
 import authorRoutes from './route/author';
 import userRoutes from './route/user';
+import sessionMiddleware from "./middlewares/session";
 import passportMiddleware from './middlewares/passport.Jwt';
 import {initPassportLocal } from "./middlewares/passport.local"
 
 dotenv.config();
 
-const connectDB = async function():Promise<void> {
+const startApp = async function():Promise<void> {
     try{
         await mongoose.connect(
             "mongodb://127.0.0.1:27017/employee_management",
             {
-                retryWrites: true, w: 'majority'
+                retryWrites: true, 
+                w: 'majority'
             }
         )
         console.log("connect successfull");
@@ -29,19 +31,12 @@ const connectDB = async function():Promise<void> {
         app.use(express.urlencoded({ extended: true }));
         app.use(express.json());
 
-        app.use(
-            session({
-                secret: "secretcode",
-                resave: true,
-                saveUninitialized: true,
-            })
-        );
-
+        app.use(sessionMiddleware);
         app.use(passport.initialize());
         app.use(passport.session());
 
-        initPassportLocal();
         passport.use(passportMiddleware);
+        initPassportLocal();
 
         
 
@@ -85,4 +80,4 @@ const connectDB = async function():Promise<void> {
     }
 }
 
-connectDB();
+startApp();

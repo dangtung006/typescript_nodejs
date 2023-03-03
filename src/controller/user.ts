@@ -3,6 +3,7 @@ import { UserService } from '../services/user';
 import { generateToken } from "../helper/jwt.helper";
 import { HTTP400Error } from "../helper/error.helper";
 import { logger } from "../helper/loggerWinston.helper";
+import passport from 'passport';
 
 const UserServiceHelper = new UserService();
 
@@ -54,4 +55,26 @@ const signIn = async (req : Request, res : Response): Promise<Response>=>{
     }
 }
 
-export default { signIn, signUp }
+const signInLocal = async (req : Request, res : Response):Promise<any> => {
+    try{
+        passport.authenticate("local" , (err: any, user : any, info : any)=>{
+            console.log("user : ", user);
+            if(!user)
+                throw new HTTP400Error("Invalid Username or Password");
+
+            req.logIn(user, (err)=>{
+                if(err) throw new HTTP400Error("Login fail");
+                return res.status(400).json({ user });
+            });
+        });
+
+    }catch(err : any){
+        return res.status(err.httpCode).send({ 
+            result : 0 , 
+            message : err.message, 
+            status : err.httpCode 
+        });
+    }
+}
+
+export default { signIn, signInLocal, signUp }
