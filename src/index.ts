@@ -1,12 +1,14 @@
 import express from "express";
 import * as dotenv from "dotenv";
+import passport from 'passport'
 import cors from "cors";
 import helmet from "helmet";
 import { itemsRouter } from "./item/item.router";
 import mongoose from 'mongoose';
 import bookRoutes from './route/book';
 import authorRoutes from './route/author';
-
+import userRoutes from './route/user';
+import passportMiddleware from './middlewares/passport';
 
 dotenv.config();
 
@@ -24,6 +26,9 @@ const connectDB = async function():Promise<void> {
 
         app.use(express.urlencoded({ extended: true }));
         app.use(express.json());
+        app.use(passport.initialize());
+        passport.use(passportMiddleware);
+
         
 
         // Middlewares :
@@ -55,6 +60,7 @@ const connectDB = async function():Promise<void> {
         // app.use("/items", itemsRouter);
         app.use("/book", bookRoutes);
         app.use("/author", authorRoutes);
+        app.use("/user", userRoutes);
 
         const server = app.listen(PORT, () => {
             console.log(`Listening on port ${PORT}`);
